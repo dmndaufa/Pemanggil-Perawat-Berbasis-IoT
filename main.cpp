@@ -10,8 +10,8 @@
 MFRC522 mfrc522(SS_PIN, RST_PIN);
 
 // Koneksi WiFi
-const char* ssid = "Samsung";
-const char* password = "permata45";
+const char* ssid = "........."; // Nama Wifi
+const char* password = "........"; //Password Wifi
 
 // Definisi pin
 const int buzzer = 5;
@@ -68,7 +68,7 @@ void httppost()
         // Menyiapkan data untuk permintaan HTTP POST
         String postData = "Nama=" + perawat + "&Tempat=" + tempat;
 
-        http.begin("http://192.168.45.44/Nursecall/save_data.php"); // URL Webserver saya
+        http.begin("http://192.168.45.44/Nursecall/save_data.php"); // Diganti sesuai URL WEB Server
         http.addHeader("Content-Type", "application/x-www-form-urlencoded");
 
         int httpCode = http.POST(postData);
@@ -121,7 +121,7 @@ void loop()
         Serial.println("UID tag: " + content);
 
         // Perbandingan UID yang benar
-        if (content == " 21 6B 37 00")
+        if (content == " 21 6B 37 00") // Ganti sesuai UID tag RFID
         {
             digitalWrite(ledPin, LOW);
             digitalWrite(buzzer, LOW);  // Mematikan buzzer
@@ -133,7 +133,7 @@ void loop()
             delay(5000);
             ESP.restart();
         }
-        else if (content == " 73 4D B3 F7")
+        else if (content == " 73 4D B3 F7") // Ganti sesuai UID tag RFID
         {
             digitalWrite(ledPin, LOW);
             digitalWrite(buzzer, LOW);  // Mematikan buzzer
